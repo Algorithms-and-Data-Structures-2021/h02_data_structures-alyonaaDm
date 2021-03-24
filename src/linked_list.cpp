@@ -48,7 +48,7 @@ namespace itis {
             tail_->next = node;
             tail_ = node;
         } else {
-            Node *prenode = find_node(index-1);
+            Node *prenode = find_node(index - 1);
             Node *node = new Node(e, prenode->next);
             prenode->next = node;
         }
@@ -67,13 +67,13 @@ namespace itis {
         // Tip 1: рассмотрите случай, когда удаляется элемент в начале списка
         // Tip 2: используйте функцию find_node(index)
         // напишите свой код здесь ...
-        Element ans = Element ::UNINITIALIZED;
+        Element ans = Element::UNINITIALIZED;
         if (index == 0) {
-            if(size_ ==1){
+            if (size_ == 1) {
                 ans = head_->data;
-            delete head_;
-            head_ = nullptr;
-            tail_ = nullptr;
+                delete head_;
+                head_ = nullptr;
+                tail_ = nullptr;
 
             } else {
                 Node *node = head_->next;
@@ -81,20 +81,18 @@ namespace itis {
                 delete head_;
                 head_ = node;
             }
-        }
-        else if(index == size_-1){
-            tail_=find_node(index-1);
+        } else if (index == size_ - 1) {
+            tail_ = find_node(index - 1);
             ans = tail_->next->data;
             delete tail_->next;
             tail_->next = nullptr;
-        }
-        else{
-            Node* node = find_node(index-1);
-            Node* noDE = node->next;
-            node->next=noDE->next;
+        } else {
+            Node *node = find_node(index - 1);
+            Node *noDE = node->next;
+            node->next = noDE->next;
             ans = noDE->data;
-            delete noDE;
-;        }
+            delete noDE;;
+        }
         size_--;
         return ans;
     }
@@ -103,7 +101,7 @@ namespace itis {
         // Tip 1: люди в черном (MIB) пришли стереть вам память
         // напишите свой код здесь ...
         int size = size_;
-        for(int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             Node *ans = head_->next;
             delete head_;
             head_ = ans;
